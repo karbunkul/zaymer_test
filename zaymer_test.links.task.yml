@@ -1,0 +1,11 @@
+zaymer_test.transfer:
+  title: Transfer
+  route_name: zaymer_test.transfer
+  base_route: zaymer_test.transfer
+  weight: 100
+
+zaymer_test.users:
+  title: 'Users'
+  route_name: zaymer_test.users
+  base_route: zaymer_test.transfer
+  weight: 300

@@ -1,0 +1,15 @@
+zaymer_test.transfer:
+  path: 'transfer'
+  defaults:
+    _form: '\Drupal\zaymer_test\Form\ZaymerForm'
+    _title: 'Перевод денег'
+  requirements:
+    _permission: 'access content'
+
+zaymer_test.users:
+  path: 'transfer/users'
+  defaults:
+    _controller: '\Drupal\zaymer_test\Controller\Users::main'
+    _title: 'Пользователи'
+  requirements:
+    _permission: 'access content'

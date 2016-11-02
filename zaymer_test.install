@@ -1,0 +1,88 @@
+<?php
+
+function zaymer_test_schema() {
+
+  $schema['zaymer_users'] = [
+    'fields' => [
+      'id' => [
+        'description' => 'user id',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => 'name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'locked' => [
+        'description' => 'locked state',
+        'type' => 'int',
+        'length' => 1,
+        'not null' => TRUE,
+        'default' => 0
+      ],
+      'balance' => [
+        'description' => 'balance',
+        'type' => 'numeric',
+        'precision' => 10,
+        'scale'     => 2,
+        'not null' => TRUE,
+        'default' => 0
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  $schema['zaymer_comments'] = [
+    'fields' => [
+      'id' => [
+        'description' => 'comment id',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'user_id' => [
+        'description' => 'name',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => TRUE,
+      ],
+      'text' => [
+        'description' => 'text',
+        'type' => 'text',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+
+}
+
+function zaymer_test_install() {
+
+  $data = [
+    [
+      'name' => 'Пушкин Александр Сергеевич',
+      'balance' => 16000,
+    ],
+    [
+      'name' => 'Гоголь Николай Васильевич',
+      'balance' => 12000,
+    ],
+    [
+      'name' => 'Михаил Юрьевич Лермонтов',
+      'balance' => 23000,
+    ],
+    [
+      'name' => 'Федор Михайлович Достоевский',
+      'balance' => 18000,
+    ],
+  ];
+
+  foreach ($data as $item) {
+    \Drupal::database()->insert('zaymer_users')
+      ->fields($item)->execute();
+  }
+}

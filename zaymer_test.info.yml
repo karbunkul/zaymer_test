@@ -1,0 +1,4 @@
+name: Zaymer test
+type: module
+description: 'Zaymer test task'
+core: 8.x
